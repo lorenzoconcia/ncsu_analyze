@@ -1,5 +1,9 @@
 ### Analyze function for post-coffee: (In a new notebook?)
-def analyze(filename):
+import sys
+import numpy as np
+
+
+def analyze(filename, outputfile):
     data = np.loadtxt(fname=filename, delimiter=',')
     
     plt.figure(figsize=(10.0, 3.0))
@@ -17,4 +21,9 @@ def analyze(filename):
     plt.plot(data.min(0))
     
     plt.tight_layout()
-    plt.show()
+    plt.savefig(outputfile)
+
+script = sys.argv[0]
+inputfile = sys.argv[1]
+outputfile = sys.argv[2]
+analyze(inputfile, outputfile)
